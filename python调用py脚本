@@ -1,0 +1,6 @@
+import sys
+#输入python脚本路径      
+sys.path.append(r"C:\Users\chang.yanpeng\Desktop")    
+from ghy_chang import * 
+#调用脚本中的函数
+test_function()
