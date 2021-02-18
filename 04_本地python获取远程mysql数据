@@ -1,0 +1,8 @@
+import pandas as pd
+import pymysql
+conn = pymysql.connect(host='10.54.147.64',user = "unified_account",passwd = "Ghy_dev2020",db = "unified_account")
+cursor=conn.cursor()
+cursor.execute("select * from t_check_result")
+
+row_all=cursor.fetchall()
+df=pd.DataFrame(row_all)
