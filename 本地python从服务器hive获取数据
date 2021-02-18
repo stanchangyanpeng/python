@@ -1,0 +1,23 @@
+#pip install pure-sasl
+#pip install thrift_sasl==0.2.1 --no-deps
+#pip install thrift
+#pip install impyla
+#pip install thriftpy
+
+import puresasl#来源于pip install pure-sasl 
+import thrift_sasl#0.2.1
+import thrift #0.13.0
+from impala.util import as_pandas
+from impala.dbapi import connect
+import thriftpy
+conn = connect(host='10.44.203.5', port = 25004,user='ghy.xiaopan3',password='123456@byd',database='ghy_usr12',auth_mechanism = 'PLAIN')
+#错误展现： TypeError: can’t concat str to bytes
+#错误解决:
+    # 增加对于tody的类型判断，做一些处理
+    #if (type(body) is str):
+        #body = body.encode()
+cursor = conn.cursor()
+cursor.execute('show tables')
+cursor.execute('SELECT * FROM test ')
+#只有第一次运行有效
+df=as_pandas(cursor)
